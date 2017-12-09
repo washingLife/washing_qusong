@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  resources :waybills
   devise_for :couriers
+
+  resources :waybills do
+  	member do
+  		put:accept
+  		put:reject
+  		put:yiqu
+  	end
+  end
   
   get 'home', to: 'home#index'
 
