@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
-  resources :waybills
   devise_for :couriers
 
-  resources :waybills do
-  	member do
-  		put:accept
-  		put:reject
-  		put:yiqu
-  	end
+  resources :waybills do 
+    member do 
+      put :accept
+      put :reject
+      put :yiqu
+      put :submit_items
+    end
+    resources :items 
   end
-  
+
   get 'home', to: 'home#index'
 
   root to: 'home#index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
